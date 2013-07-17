@@ -1,8 +1,10 @@
-var express = require('express');
-var fs = require('fs');
+var express = require('express')
+, fs = require('fs')
+, path = require('path');
 
 
 var app = express.createServer(express.logger());
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', function(request, response) {
   var buffer = fs.readFileSync("index.html")
